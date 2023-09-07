@@ -1,36 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using Unity.VisualScripting;
 
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI textMeshPro;
-    public string[] lines;
-    public float textSpeed;
+    DialogueText dialogueText;
+    DialogueImage dialogueImage;
 
-    private int index;
-
-
-    void Start()
+    void Awake()
     {
-        textMeshPro.text = string.Empty;
-        StartDialogue();
-    }
-    void StartDialogue()
-    {
-        index = 0;
-        StartCoroutine(TypeLine());
+        dialogueImage = GameObject.FindObjectOfType<DialogueImage>().GetComponent<DialogueImage>();
+        dialogueText = GameObject.FindObjectOfType<DialogueText>().GetComponent<DialogueText>();
     }
 
-    IEnumerator TypeLine()
+    public void StartDialogue(string text, Sprite sprite)
     {
-        foreach(char c in lines[index].ToCharArray())
-        {
-            textMeshPro.text += c;
-            yield return new WaitForSeconds(textSpeed);
-        }
-    }
 
+    }
 }

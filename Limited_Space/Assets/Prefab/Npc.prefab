@@ -224,9 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 9023556675896383286}
-  lines:
-  - Hello
-  - What dp
   textSpeed: 0.5
 --- !u!1 &7317489882166318564
 GameObject:
