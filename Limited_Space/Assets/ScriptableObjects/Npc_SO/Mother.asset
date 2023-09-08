@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18486308b4bc3194e9a79db4ab065cd0, type: 3}
   m_Name: Mother
   m_EditorClassIdentifier: 
-  name: 
-  Job: 
+  name: Patricia
+  Job: House-mom
   text: 
   npcSprite: {fileID: 0}

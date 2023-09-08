@@ -12,6 +12,6 @@ public class Npc_Pick : MonoBehaviour
     }
     public Npc PickNpc()
     {
-        return manager.currentNpc = manager.npcs[Random.Range(0, manager.npcs.Count)];
+        return manager.currentNpc = manager.NpcList[Random.Range(0, manager.NpcList.Count)];
     }
 }
