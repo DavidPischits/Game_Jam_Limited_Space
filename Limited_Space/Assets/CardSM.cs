@@ -14,6 +14,8 @@ public class CardSM : MonoBehaviour
     public event Action OnNewCard;
     public CardActions cardActions;
     [SerializeField] CardDisplay cardDisplay;
+    [SerializeField] AudioManager audioManager;
+    [SerializeField] AudioClip click;
     [SerializeField]Manager manager;
     [SerializeField] DisplayActions displayActions;
     [SerializeField] CardDisplay display;
@@ -51,6 +53,7 @@ public class CardSM : MonoBehaviour
         {
             OnLeft?.Invoke(manager.currentCard.answerYes);
             cardState = newState;
+            audioManager.PlayAudio(click);
         }
 
         else if(newState == CardState.Right)
@@ -74,9 +77,12 @@ public class CardSM : MonoBehaviour
     {
         OnLeft += _ => cardTransform.RotateCardLeft();
         OnLeft += cardDisplay.DisplayAnswer;
+        OnLeft += _ => audioManager.PlayAudio(click);
 
         OnRight += _ => cardTransform.RotateCardRight();
         OnRight += cardDisplay.DisplayAnswer;
+        OnRight += _ => audioManager.PlayAudio(click);
+
 
         OnNewCard += manager.MoveCardAway;
         OnNewCard += manager.SelectRandomNpc;
