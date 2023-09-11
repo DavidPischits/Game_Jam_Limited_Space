@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 
 public class DialogueText : MonoBehaviour
 {
-    NpcManager manager;
     public TextMeshProUGUI textMeshPro;
     public float textSpeed;
     public bool running;
@@ -16,7 +15,6 @@ public class DialogueText : MonoBehaviour
 
     void Awake()
     {
-        manager = GameObject.FindObjectOfType<NpcManager>().GetComponent<NpcManager>();
     }
 
     void Start()

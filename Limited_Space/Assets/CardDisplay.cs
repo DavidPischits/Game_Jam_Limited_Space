@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField]Card card;
     [SerializeField] Image image;
-    [SerializeField] TextMeshProUGUI cornerTm;
-    [SerializeField] TextMeshProUGUI nameTm;
-
-
-
-    public void DisplayAggressionCard(AggressionCard aggressionCard)
+    [SerializeField] TextMeshProUGUI _name;
+    [SerializeField] TextMeshProUGUI dialogue;
+    [SerializeField] TextMeshProUGUI answer;
+    
+ 
+    public void Display(string newName, Sprite newSprite, string newDialogue)
     {
-        cornerTm.text = aggressionCard.ApFactor.ToString();
-        nameTm.text = aggressionCard.name.ToString();
-        image.sprite = aggressionCard.cardSprite;
-
+       _name.text = newName;
+        dialogue.text = newDialogue;
+        image.sprite = newSprite;
     }
+
+    public void DisplayAnswer(string newAnswer)
+    {
+        answer.text = newAnswer;
+    }
+
 }
+
+    

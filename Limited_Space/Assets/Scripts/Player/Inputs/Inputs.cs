@@ -8,40 +8,30 @@ public class Inputs : MonoBehaviour
 {
     Controls controls;
 
-    InputAction moveInputAction;
-    MovementActions movementActions;
-    AttackActions attackActions;
-    [SerializeField] Vector2 moveInput;
-    private event Action<Vector2> OnMove;
+    public static InputAction clickAction;
+    [SerializeField]CardSM cardSm;
 
     
     void Awake()
     {
         controls = new Controls();
-        movementActions = GameObject.FindObjectOfType<MovementActions>().GetComponent<MovementActions>();
-        moveInputAction = controls.Movement.Move;
 
+        clickAction = controls.CardInteraction.clickAction;
        
     }
 
     void Start()
     {
-        InputEnabling.EnableAction(moveInputAction); 
-        
+        InputEnabling.EnableAction(clickAction);
     }
-    void Update()
-    {
-        
-        OnMove.Invoke(moveInputAction.ReadValue<Vector2>());
-    }
+
 
     void OnEnable()
     {
-        OnMove += movementActions.Move;
+        clickAction.performed += _ => cardSm.ChangeState(CardSM.CardState.CardAway);
     }
 
     void OnDisable()
     {
-        OnMove -= movementActions.Move;
     }
 }
