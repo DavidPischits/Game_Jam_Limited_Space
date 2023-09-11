@@ -1119,6 +1119,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 994ea92c664c8914faa62a606fa45206, type: 2}
   cards:
   - {fileID: 11400000, guid: 459b1b2bbaeb1f943a279150afae08a3, type: 2}
+  - {fileID: 11400000, guid: 7c84e404547072841a4700fe0d1131e6, type: 2}
+  - {fileID: 11400000, guid: bffb7e4ea46688b468ddf9b6c9ffd38e, type: 2}
+  - {fileID: 11400000, guid: 18eb1088ac1aa9f4496bf99ac81c37b2, type: 2}
+  seenCards: []
+  seenNpcs: []
   currentNpc: {fileID: 0}
   currentCard: {fileID: 0}
 --- !u!4 &792449624
@@ -1163,6 +1168,7 @@ MonoBehaviour:
   cardActions: {fileID: 1730805408}
   cardDisplay: {fileID: 2100117637}
   manager: {fileID: 792449623}
+  displayActions: {fileID: 1730805410}
   display: {fileID: 2100117637}
   cardTransform: {fileID: 1449113905}
   cardState: 0
@@ -2073,7 +2079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedCard: {fileID: 100778251}
-  rotationAroundSelfSpeed: 0.25
+  rotationAroundSelfSpeed: 100
 --- !u!1 &1730805404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,6 +2093,7 @@ GameObject:
   - component: {fileID: 1730805407}
   - component: {fileID: 1730805408}
   - component: {fileID: 1730805409}
+  - component: {fileID: 1730805410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2107,6 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardSm: {fileID: 792449626}
+  cardActions: {fileID: 1730805408}
 --- !u!4 &1730805406
 Transform:
   m_ObjectHideFlags: 0
@@ -2169,6 +2177,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79566e5cd2fe104aaeeb7e75865acde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1730805410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730805404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8aabf7b519cfa4690311fb43df2d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 2100117637}
+  manager: {fileID: 792449623}
 --- !u!1 &1764033052
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,21 +8,17 @@ public class CardActions : MonoBehaviour
 {
     [SerializeField]Manager manager;
 
+ 
 
-    public async void SelectRandom()
+    public void MoveCardAway()
     {
-        SelectRandomNpc();
-    await Task.Delay(10);
-        SelectRandomCard();
+        manager.cards.Remove(manager.currentCard);
+        manager.seenCards.Add(manager.currentCard);
     }
-    public void SelectRandomCard()
+    public void MoveNpcAway()
     {
-        manager.currentCard = manager.currentNpc.cards[Random.Range(0, manager.cards.Count)];
-    }
-
-    public void SetCardToNull()
-    {
-        manager.currentCard = null;
+        manager.npcs.Remove(manager.currentNpc);
+        manager.seenNpcs.Add(manager.currentNpc);
     }
 
     public void SelectRandomNpc()

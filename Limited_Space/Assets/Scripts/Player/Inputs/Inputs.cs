@@ -10,6 +10,7 @@ public class Inputs : MonoBehaviour
 
     public static InputAction clickAction;
     [SerializeField]CardSM cardSm;
+    [SerializeField] CardActions cardActions;
 
     
     void Awake()
@@ -28,10 +29,12 @@ public class Inputs : MonoBehaviour
 
     void OnEnable()
     {
-        clickAction.performed += _ => cardSm.ChangeState(CardSM.CardState.CardAway);
+        clickAction.performed += _ => cardSm.CardAway();
     }
 
     void OnDisable()
     {
+        clickAction.performed -= _ => cardSm.CardAway();
+
     }
 }

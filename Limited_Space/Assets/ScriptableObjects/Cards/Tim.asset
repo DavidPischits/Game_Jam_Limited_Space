@@ -10,10 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f36de34ad603e945ae8c90d40ef462c, type: 3}
-  m_Name: Bob
+  m_Name: Tim
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 11400000, guid: 459b1b2bbaeb1f943a279150afae08a3, type: 2}
-  - {fileID: 11400000, guid: 7c84e404547072841a4700fe0d1131e6, type: 2}
-  - {fileID: 11400000, guid: bffb7e4ea46688b468ddf9b6c9ffd38e, type: 2}
-  _name: Bob
+  cards: []
+  _name: 

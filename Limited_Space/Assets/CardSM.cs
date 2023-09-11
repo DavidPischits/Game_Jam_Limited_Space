@@ -2,7 +2,9 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using static DeckSM;
 
 public class CardSM : MonoBehaviour
@@ -13,6 +15,7 @@ public class CardSM : MonoBehaviour
     public CardActions cardActions;
     [SerializeField] CardDisplay cardDisplay;
     [SerializeField]Manager manager;
+    [SerializeField] DisplayActions displayActions;
     [SerializeField] CardDisplay display;
     [SerializeField] CardTransform cardTransform;
 
@@ -21,7 +24,6 @@ public class CardSM : MonoBehaviour
     public enum CardState
     {
         Cold,
-        NewCard,
         Left,
         Right,
         CardAway,
@@ -43,7 +45,7 @@ public class CardSM : MonoBehaviour
     }
 
 
-    public void ChangeState(CardState newState)
+    public async void ChangeState(CardState newState)
     {
         if(newState == CardState.Left)
         {
@@ -57,22 +59,14 @@ public class CardSM : MonoBehaviour
             cardState = newState;
         }
 
-        else if (newState == CardState.NewCard)
-        {
+    }
+
+    public void CardAway()
+    {
+        if (Leaned())
+        { 
+            cardTransform.RotateCardAroundSelf();
             OnNewCard?.Invoke();
-            cardState = newState;
-            display.Display(manager.currentNpc._name, manager.currentCard.sprite, manager.currentCard.dialogue);
-        }
-
-        else if (newState == CardState.CardAway)
-        {
-            if(Leaned())
-            {
-                cardTransform.RotateCardAroundSelf();
-                cardState = newState;
-            }
-
-           
         }
     }
 
@@ -84,6 +78,10 @@ public class CardSM : MonoBehaviour
         OnRight += _ => cardTransform.RotateCardRight();
         OnRight += cardDisplay.DisplayAnswer;
 
-        OnNewCard += cardActions.SelectRandom;
+        OnNewCard += manager.MoveCardAway;
+        OnNewCard += manager.SelectRandomNpc;
+        OnNewCard += manager.SelectRandomCardNPC;
+        OnNewCard += displayActions.SetToCurrent;
+
     }
 }
