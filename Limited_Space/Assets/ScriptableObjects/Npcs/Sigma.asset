@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f36de34ad603e945ae8c90d40ef462c, type: 3}
   m_Name: Sigma
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: 878feb121ea9ea14abd4e840f2667ce1, type: 2}
   _name: Sigma

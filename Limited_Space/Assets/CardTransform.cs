@@ -8,6 +8,8 @@ public class CardTransform : MonoBehaviour
     [SerializeField] GameObject serializedCard;
     GameObject card;
     [SerializeField] float rotationAroundSelfSpeed;
+    [SerializeField] float rotationToMiddleSpeed;
+    [SerializeField] Quaternion middleQuaternion;
 
      public void Start()
     {
@@ -31,6 +33,12 @@ public class CardTransform : MonoBehaviour
     public void RotateCardAroundSelf()
     {
         card.transform.DORotate(new Vector3(0 , 360, 0), Time.deltaTime * rotationAroundSelfSpeed, RotateMode.LocalAxisAdd).SetLoops(0).SetEase(Ease.Linear);
+    }
+
+    public void RotateCardToMiddle()
+    {
+
+        card.transform.DORotate(Vector3.zero, rotationToMiddleSpeed * Time.deltaTime).SetLoops(0).SetEase(Ease.Linear);
     }
 
     public void RotateCardRight()

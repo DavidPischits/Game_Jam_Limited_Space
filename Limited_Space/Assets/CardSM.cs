@@ -11,6 +11,7 @@ public class CardSM : MonoBehaviour
 {
     public static event Action <string> OnLeft;
     public static event Action<string> OnRight;
+    event Action OnMiddle;
     public event Action OnNewCard;
     public CardActions cardActions;
     [SerializeField] CardDisplay cardDisplay;
@@ -28,6 +29,7 @@ public class CardSM : MonoBehaviour
         Cold,
         Left,
         Right,
+        Middle
     }
 
     bool Leaned()
@@ -48,11 +50,13 @@ public class CardSM : MonoBehaviour
 
     public void ChangeState(CardState newState)
     {
-        if(newState == CardState.Left)
+        //if(CheckIfAlready(newState)) { return; }
+
+         if(newState == CardState.Left)
         {
             OnLeft?.Invoke(manager.currentCard.answerYes);
             cardState = newState;
-            audioManager.PlayAudio(click);
+          
         }
 
         else if(newState == CardState.Right)
@@ -61,6 +65,22 @@ public class CardSM : MonoBehaviour
             cardState = newState;
         }
 
+        else if(newState == CardState.Middle)
+        {
+            OnMiddle?.Invoke();
+
+            cardState = newState;
+            
+        }
+
+    }
+
+    bool CheckIfAlready(CardState state)
+    {
+        if(cardState == state) { return true; }
+
+        else
+        return false;
     }
 
 
@@ -73,6 +93,9 @@ public class CardSM : MonoBehaviour
         OnRight += _ => cardTransform.RotateCardRight();
         OnRight += cardDisplay.DisplayAnswer;
         OnRight += _ => audioManager.PlayAudio(click);
+
+        OnMiddle += cardDisplay.EmptyAnswer;
+        OnMiddle += cardTransform.RotateCardToMiddle;
 
 
 

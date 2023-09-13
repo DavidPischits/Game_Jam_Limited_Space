@@ -31,6 +31,11 @@ public class CardDisplay : MonoBehaviour
         answer.text = newAnswer;
     }
 
+    public void EmptyAnswer()
+    {
+        answer.text = string.Empty;
+    }
+
 }
 
     
