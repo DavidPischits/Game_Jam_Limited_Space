@@ -85,8 +85,7 @@ public class CardSM : MonoBehaviour
 
 
         OnNewCard += manager.MoveCardAway;
-        OnNewCard += manager.SelectRandomNpc;
-        OnNewCard += manager.SelectRandomCardNPC;
+        OnNewCard += manager.RandomN;
         OnNewCard += displayActions.SetToCurrent;
 
     }

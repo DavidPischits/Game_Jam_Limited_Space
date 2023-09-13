@@ -13,16 +13,21 @@ public class Manager : MonoBehaviour
     public Card currentCard;
 
 
-    async void Start()
+    void Awake()
+    {
+        RandomN();
+    }
+
+    public void RandomN()
     {
         SelectRandomNpc();
         SelectRandomCardNPC();
-
     }
 
     public void SelectRandomNpc()
     {
         currentNpc = npcs[Random.Range(0, npcs.Count)];
+       
     }
 
     public void SelectRandomCardNPC()
@@ -32,8 +37,8 @@ public class Manager : MonoBehaviour
 
     public void MoveCardAway()
     {
-        cards.Remove(currentCard);
-        seenCards.Add(currentCard);
+        npcs.Remove(currentNpc);
+        seenNpcs.Add(currentNpc);
     }
     public void MoveNpcAway()
     {

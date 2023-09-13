@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f36de34ad603e945ae8c90d40ef462c, type: 3}
   m_Name: Nerd
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: b85d2b8d9c5d03e4ebbd1f24d364ccf9, type: 2}
   _name: Nerd

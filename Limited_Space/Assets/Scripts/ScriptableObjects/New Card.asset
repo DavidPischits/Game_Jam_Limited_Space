@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ab0fae7894a4948b48667e180dd988, type: 3}
   m_Name: New Card
   m_EditorClassIdentifier: 
-  answerYes: 
-  answerNo: 
+  answerYes: Yes
+  answerNo: No
   value: 0
-  dialogue: 
+  dialogue: ...
   sprite: {fileID: 0}
