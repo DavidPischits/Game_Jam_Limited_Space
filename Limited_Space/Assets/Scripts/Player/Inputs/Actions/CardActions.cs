@@ -3,26 +3,35 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using System.Threading.Tasks;
+using System;
 
 public class CardActions : MonoBehaviour
 {
     [SerializeField]Manager manager;
+    public event Action OnNewCard;
+    public event Action OnFirst;
+    [SerializeField] CardDisplay display;
 
- 
-
-    public void MoveCardAway()
+    private void Start()
     {
-        manager.cards.Remove(manager.currentCard);
-        manager.seenCards.Add(manager.currentCard);
-    }
-    public void MoveNpcAway()
-    {
-        manager.npcs.Remove(manager.currentNpc);
-        manager.seenNpcs.Add(manager.currentNpc);
+        OnFirst?.Invoke();
     }
 
-    public void SelectRandomNpc()
+    public void TryNewCard()
     {
-        manager.currentNpc = manager.npcs[Random.Range(0, manager.npcs.Count)];
+        if(CardSM.cardState == CardSM.CardState.Left)
+        {
+            OnNewCard?.Invoke();
+        }
+    }
+    
+    void OnEnable()
+    {
+        OnFirst += manager.SelectRandomNpc;
+        OnFirst += manager.SelectRandomCardNPC;
+
+        OnNewCard += manager.MoveCardAway;
+        OnNewCard += manager.SelectRandomCardNPC;
+        OnNewCard += display.SetToCurrent;
     }
 }

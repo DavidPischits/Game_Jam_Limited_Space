@@ -29,12 +29,13 @@ public class Inputs : MonoBehaviour
 
     void OnEnable()
     {
-        clickAction.performed += _ => cardSm.CardAway();
+        clickAction.performed += _ => cardActions.TryNewCard();
     }
 
     void OnDisable()
     {
-        clickAction.performed -= _ => cardSm.CardAway();
+        clickAction.performed -= _ => cardActions.TryNewCard();
+        
 
     }
 }

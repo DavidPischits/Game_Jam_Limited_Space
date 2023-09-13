@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcs:
-  - {fileID: 11400000, guid: 28882a168ee93f34e8b04d0ed31f1067, type: 2}
+  - {fileID: 11400000, guid: 8ef6748fdc4c4e347a1535fbc5a96796, type: 2}
   cards: []
   seenCards: []
   seenNpcs: []
@@ -1410,7 +1410,6 @@ MonoBehaviour:
   displayActions: {fileID: 1730805410}
   display: {fileID: 2100117637}
   cardTransform: {fileID: 1449113905}
-  cardState: 0
 --- !u!1 &807348774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,6 +2403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 792449623}
+  display: {fileID: 2100117637}
 --- !u!114 &1730805409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3041,6 +3041,7 @@ MonoBehaviour:
   _name: {fileID: 1371491992}
   dialogue: {fileID: 1031224857}
   answer: {fileID: 75057264}
+  manager: {fileID: 792449623}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

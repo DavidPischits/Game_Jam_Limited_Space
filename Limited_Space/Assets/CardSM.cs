@@ -21,14 +21,13 @@ public class CardSM : MonoBehaviour
     [SerializeField] CardDisplay display;
     [SerializeField] CardTransform cardTransform;
 
-    [SerializeField]CardState cardState = CardState.Cold;
+    [SerializeField]public static   CardState cardState { get; private set; }
 
     public enum CardState
     {
         Cold,
         Left,
         Right,
-        CardAway,
     }
 
     bool Leaned()
@@ -47,7 +46,7 @@ public class CardSM : MonoBehaviour
     }
 
 
-    public async void ChangeState(CardState newState)
+    public void ChangeState(CardState newState)
     {
         if(newState == CardState.Left)
         {
@@ -64,14 +63,6 @@ public class CardSM : MonoBehaviour
 
     }
 
-    public void CardAway()
-    {
-        if (Leaned())
-        { 
-            cardTransform.RotateCardAroundSelf();
-            OnNewCard?.Invoke();
-        }
-    }
 
     void OnEnable()
     {
@@ -84,9 +75,6 @@ public class CardSM : MonoBehaviour
         OnRight += _ => audioManager.PlayAudio(click);
 
 
-        OnNewCard += manager.MoveCardAway;
-        OnNewCard += manager.RandomN;
-        OnNewCard += displayActions.SetToCurrent;
 
     }
 }

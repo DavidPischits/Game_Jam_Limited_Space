@@ -12,12 +12,6 @@ public class Manager : MonoBehaviour
     public Npc currentNpc;
     public Card currentCard;
 
-
-    void Awake()
-    {
-        RandomN();
-    }
-
     public void RandomN()
     {
         SelectRandomNpc();
@@ -37,8 +31,7 @@ public class Manager : MonoBehaviour
 
     public void MoveCardAway()
     {
-        npcs.Remove(currentNpc);
-        seenNpcs.Add(currentNpc);
+        currentNpc.cards.Remove(currentCard);
     }
     public void MoveNpcAway()
     {

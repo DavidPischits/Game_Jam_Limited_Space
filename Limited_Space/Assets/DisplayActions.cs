@@ -8,9 +8,6 @@ public class DisplayActions : MonoBehaviour
     [SerializeField] Manager manager;
 
 
-    public void SetToCurrent()
-    {
-        display.Display(manager.currentNpc._name, manager.currentCard.sprite, manager.currentCard.dialogue);
-    }
+
 
 }
