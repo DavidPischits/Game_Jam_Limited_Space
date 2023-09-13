@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sigma
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 878feb121ea9ea14abd4e840f2667ce1, type: 2}
+  - {fileID: 11400000, guid: 459273d6a6ee03842a14bfb0783cbcd9, type: 2}
   _name: Sigma

@@ -1422,7 +1422,7 @@ GameObject:
   - component: {fileID: 807348777}
   - component: {fileID: 807348776}
   - component: {fileID: 807348779}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1924,7 +1924,7 @@ GameObject:
   - component: {fileID: 1077939584}
   - component: {fileID: 1077939583}
   - component: {fileID: 1077939586}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RightTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedCard: {fileID: 100778251}
   rotationAroundSelfSpeed: 100
-  rotationToMiddleSpeed: 50
+  rotationToMiddleSpeed: 100
   middleQuaternion: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1730805408 stripped
 MonoBehaviour:
@@ -2571,7 +2571,7 @@ Transform:
   m_GameObject: {fileID: 1963789144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.52, y: -2.66, z: 0.11998929}
+  m_LocalPosition: {x: 0.41, y: -2.7, z: 0.11998929}
   m_LocalScale: {x: 0.25, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

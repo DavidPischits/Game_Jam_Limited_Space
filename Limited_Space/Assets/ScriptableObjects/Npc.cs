@@ -6,6 +6,6 @@ using UnityEngine;
 
 public class Npc : ScriptableObject
 {
-    public List<Card> cards  = new List<Card>();
+    public List<Card> cards = new List<Card>();
     public string _name;
 }

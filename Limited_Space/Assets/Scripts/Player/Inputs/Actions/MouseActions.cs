@@ -12,8 +12,6 @@ public class MouseActions : MonoBehaviour
     [SerializeField] Collider2D rightCollider;
     [SerializeField] Collider2D middleTransform;
     [SerializeField] Camera mainCamera;
-    [SerializeField] LayerMask rightLayer;
-    [SerializeField] LayerMask leftLayer;
     [SerializeField]CardSM cardSm;
 
 
@@ -34,7 +32,6 @@ public class MouseActions : MonoBehaviour
 
         else if(hit.collider == middleTransform)
         {
-            Debug.Log("hit");
             cardSm.ChangeState(CardSM.CardState.Middle);   
         }
     }

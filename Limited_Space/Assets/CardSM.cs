@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using static DeckSM;
@@ -22,7 +23,7 @@ public class CardSM : MonoBehaviour
     [SerializeField] CardDisplay display;
     [SerializeField] CardTransform cardTransform;
 
-    [SerializeField]public static   CardState cardState { get; private set; }
+    [SerializeField]public static CardState cardState { get; private set; }
 
     public enum CardState
     {
@@ -50,27 +51,33 @@ public class CardSM : MonoBehaviour
 
     public void ChangeState(CardState newState)
     {
-        //if(CheckIfAlready(newState)) { return; }
+        if(CheckIfAlready(newState)) { return; }
 
-         if(newState == CardState.Left)
+
+        else
         {
-            OnLeft?.Invoke(manager.currentCard.answerYes);
-            cardState = newState;
-          
-        }
 
-        else if(newState == CardState.Right)
-        {
-            OnRight?.Invoke(manager.currentCard.answerNo);
-            cardState = newState;
-        }
-
-        else if(newState == CardState.Middle)
-        {
-            OnMiddle?.Invoke();
-
-            cardState = newState;
             
+            if (newState == CardState.Left)
+            {
+                OnLeft?.Invoke(manager.currentCard.answerYes);
+                cardState = newState;
+          
+            }
+
+            else if(newState == CardState.Right)
+            {
+                OnRight?.Invoke(manager.currentCard.answerNo);
+                cardState = newState;
+            }
+
+            else if(newState == CardState.Middle)
+            {
+                OnMiddle?.Invoke();
+
+                cardState = newState;
+            
+            }
         }
 
     }

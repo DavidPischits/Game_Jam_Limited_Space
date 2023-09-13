@@ -11,7 +11,7 @@ public class CardTransform : MonoBehaviour
     [SerializeField] float rotationToMiddleSpeed;
     [SerializeField] Quaternion middleQuaternion;
 
-     public void Start()
+    void Start()
     {
         card = serializedCard;
     }
