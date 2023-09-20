@@ -1,40 +1,88 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
-using DG.Tweening;
-
- 
 
 public class MouseActions : MonoBehaviour
 {
-    [SerializeField] Collider2D leftCollider;
-    [SerializeField] Collider2D rightCollider;
-    [SerializeField] Collider2D middleTransform;
     [SerializeField] Camera mainCamera;
-    [SerializeField]CardSM cardSm;
+    [SerializeField] ObjectManager objManager;
+    [SerializeField] RaycastHit2D hit;
+    [SerializeField] RaycastHit2D uiHit;
+    [SerializeField] LayerMask controlLayer;
+    [SerializeField] LayerMask objectLayer;
+    [SerializeField] LayerMask buttonLayer;
+    RaycastHit2D buttonHit;
+    [SerializeField] PaperObjectSM paperObject;
+    public Vector2 mousePos;
 
+ 
 
-    public void Update()
+    public void SetPaper()
     {
-
-        RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero , 10000);
-
-        if (hit.collider ==  leftCollider)
+        hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10000, objectLayer);
+        buttonHit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10000, buttonLayer);
+        if (hit)
         {
-            cardSm.ChangeState(CardSM.CardState.Left);
+            objManager.SetObjectSM(hit.collider.gameObject.GetComponent<ObjectSM>());
+
+
+
         }
 
-        else if(hit.collider == rightCollider)
+        else if(buttonHit)
         {
-            cardSm.ChangeState(CardSM.CardState.Right);
+            if(buttonHit.collider.gameObject.layer == Layers.YesButtonLayer)
+            {
+                objManager.SetButton( buttonHit.collider.gameObject.GetComponent<But>());
+                objManager.currentButton.ChangeButtonState(ButtonState.pressed);
+            }
         }
 
-        else if(hit.collider == middleTransform)
+    }
+
+    public void Move()
+    {
+        if(objManager.currentObjectSM != null)
         {
-            cardSm.ChangeState(CardSM.CardState.Middle);   
+            hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10000);
+            objManager.currentObjectSM.ChangeState(State.Picked);
+            mousePos = hit.point;
+
         }
     }
 
+    public void CheckButton()
+    {
+
+    }
+
+
+
+    public void CheckUI()
+    {
+        if (objManager.currentObjectSM != null)
+        {
+                uiHit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10000, controlLayer);
+            if (uiHit)
+            {
+                objManager.currentObjectSM.ChangeState(State.DroppedOnDesk);
+            }
+
+            else
+            {
+                objManager.currentObjectSM.ChangeState(State.Dropped);
+
+            }
+
+        }
+
+
+    }
 
 }
+
+

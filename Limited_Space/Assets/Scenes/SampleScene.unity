@@ -1359,8 +1359,6 @@ MonoBehaviour:
   npcs:
   - {fileID: 11400000, guid: 8ef6748fdc4c4e347a1535fbc5a96796, type: 2}
   cards: []
-  seenCards: []
-  seenNpcs: []
   currentNpc: {fileID: 11400000, guid: b4cf336337146f74abe54df8a30d7c02, type: 2}
   currentCard: {fileID: 0}
 --- !u!4 &792449624
@@ -3042,6 +3040,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 792449623}
+    - target: {fileID: 6895895052649074340, guid: 425460180e10b7545ab04f492d3ed168, type: 3}
+      propertyPath: cardTransform
+      value: 
+      objectReference: {fileID: 1449113905}
     - target: {fileID: 7769702797056529828, guid: 425460180e10b7545ab04f492d3ed168, type: 3}
       propertyPath: cardSm
       value: 

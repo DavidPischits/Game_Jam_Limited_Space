@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static MouseSM;
 
 public class Inputs : MonoBehaviour
 {
     Controls controls;
-
     public static InputAction clickAction;
-    [SerializeField]CardSM cardSm;
-    [SerializeField] CardActions cardActions;
-
+    [SerializeField] Camera mainCamera;
+    [SerializeField] MouseActions mouseActions;
+    public Vector2 mousePos;
     
     void Awake()
     {
@@ -27,15 +28,33 @@ public class Inputs : MonoBehaviour
     }
 
 
-    void OnEnable()
+    public void Update()
     {
-        clickAction.performed += _ => cardActions.TryNewCard();
-    }
 
-    void OnDisable()
-    {
-        clickAction.performed -= _ => cardActions.TryNewCard();
+        if(Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            mouseActions.SetPaper();
+        }
+
+        else if(Mouse.current.leftButton.isPressed)
+        {
+            mouseActions.Move();
+        }
+
+        else if(Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            mouseActions.CheckUI();
+        }
+
         
 
     }
+
+    void OnEnable()
+    {
+
+    }
+
+
+
 }
