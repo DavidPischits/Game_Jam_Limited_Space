@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class UISM : StateMachine
 {
 
-    public static UIState uiState { get; private set; }
+    public static UIState state { get; private set; }
     [SerializeField] AppData appData;
 
     void Awake()
@@ -16,7 +17,8 @@ public class UISM : StateMachine
     public enum UIState
     {
         Cold,
-        App
+        App,
+        End
     }
 
 
@@ -29,8 +31,14 @@ public class UISM : StateMachine
             switch(newState)
             {
                 case UIState.Cold:
+                    state = newState;
                     break;
                 case UIState.App: appData.ToogleApp(true);
+                    state = newState;
+                    break;
+                case UIState.End: appData.ToogleWorkCanvas(false);
+                                  
+                    state = newState;
                     break;
             }
         }
@@ -38,7 +46,7 @@ public class UISM : StateMachine
 
     public  bool CheckIfAlready(UIState state)
     {
-        if (uiState == state) { return true; }
+        if (UISM.state == state) { return true; }
 
         else
             return false;

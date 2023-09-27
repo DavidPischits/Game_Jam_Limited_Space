@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class ChefManager : MonoBehaviour
 {
-    public List<Chef> chefs = new List<Chef>();
-    [field: SerializeField] public Chef currentChef { get; private set; }
+    public List<Worker> chefs = new List<Worker>();
+    [field: SerializeField] public Worker currentChef { get; private set; }
 
 
-    public void NewApplication()
+    public void SetChef(Worker chef)
     {
-        currentChef = chefs[Random.Range(0, chefs.Count)];
+        currentChef = chef;
     }
 
     void Start()
     {
-        foreach(Chef chef in chefs)
-        {
-            if(chef.unDesiredSex == chef.desiredSex) { Debug.LogError("A desired property of " + chef.name + " is the same as an undesired one of him"); }
-        }
+      
     }
 }

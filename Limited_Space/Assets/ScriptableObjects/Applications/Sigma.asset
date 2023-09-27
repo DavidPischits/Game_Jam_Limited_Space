@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d54692470c48645b327669c5755e8c, type: 3}
+  m_Name: Sigma
+  m_EditorClassIdentifier: 
+  properties:
+  - {fileID: 11400000, guid: d37eaade16fbbe546946220f2a39b681, type: 2}
+  - {fileID: 11400000, guid: fe30a0a0fdd0c4841af2b4cf67d40375, type: 2}
+  - {fileID: 11400000, guid: 1953dd2327f25014aa97be66d608cb2b, type: 2}
+  workObject: {fileID: 11400000, guid: fe30a0a0fdd0c4841af2b4cf67d40375, type: 2}
+  application: {fileID: 11400000, guid: 1953dd2327f25014aa97be66d608cb2b, type: 2}
+  Name: Sigma

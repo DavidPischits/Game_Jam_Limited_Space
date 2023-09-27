@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4688a4407ce29c742a31f55ca69c797d, type: 3}
   m_Name: SigmaChef
   m_EditorClassIdentifier: 
-  <desiredSex>k__BackingField: 0
-  <unDesiredSex>k__BackingField: 2
+  <DesiredSex>k__BackingField: 1
+  <UnDesiredSex>k__BackingField: 1

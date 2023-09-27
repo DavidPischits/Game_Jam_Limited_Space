@@ -13,6 +13,7 @@ public class Inputs : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] MouseActions mouseActions;
     public Vector2 mousePos;
+    [SerializeField] AudioManager audioManager;
     
     void Awake()
     {
@@ -33,7 +34,7 @@ public class Inputs : MonoBehaviour
 
         if(Mouse.current.leftButton.wasPressedThisFrame)
         {
-            mouseActions.SetPaper();
+            mouseActions.SetPickable();
         }
 
         else if(Mouse.current.leftButton.isPressed)

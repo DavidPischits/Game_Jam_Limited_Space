@@ -51,6 +51,7 @@ public class ChefObjectSM : ObjectSM
                     state = newState;
                     break;
                 case State.DroppedOnDesk:
+
                     gameObject.SetActive(false);
                     OnDroppedOnDesk?.Invoke(null);
                     state = newState;

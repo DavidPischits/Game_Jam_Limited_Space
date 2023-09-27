@@ -7,17 +7,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField]AudioSource audioSource;
     [SerializeField] AudioSource musicAudioSource;
 
-    [SerializeField] AudioClip clip;
-    public void PlayAudio(AudioClip audioClip)
+    [SerializeField] public AudioClip clip;
+    public void PlayClip(AudioClip audioClip)
     {
         audioSource.clip = audioClip;
         audioSource.Play();
     }
 
-    void Update()
-    {
-        SelectMusic(clip);
-    }
+
 
     public void SelectMusic(AudioClip audioClip)
     {

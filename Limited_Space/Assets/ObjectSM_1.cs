@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.XR;
@@ -9,18 +10,15 @@ using UnityEngine.XR;
 public class PaperObjectSM : ObjectSM
 {
     public State state = State.Cold;
-    [SerializeField] ObjectManager objManager;
-    [SerializeField] ObjectTransform objectTransform;
-    [SerializeField] GameObject app;
-    event Action OnDropped;
+
+    public override event Action OnDropped;
     event Action<UISM>OnDroppedOnDesk;
-    [SerializeField] UISM ui;
+    AppDisplay display;
 
  
-    void Awake()
+    public override void Awake()
     {
-        objectTransform = gameObject.GetComponent<ObjectTransform>();
-        objManager = GameObject.FindObjectOfType<ObjectManager>().GetComponent<ObjectManager>();
+        base.Awake();
     }
  
 
@@ -29,6 +27,7 @@ public class PaperObjectSM : ObjectSM
         switch (state)
         {
             case State.Cold:
+                objectTransform.TransformToSlot();
                 break;
             case State.Picked: objectTransform.TransformWithMouse();
                 break;
@@ -48,7 +47,7 @@ public class PaperObjectSM : ObjectSM
         {
             switch (newState)
             {
-                case State.Cold: 
+                case State.Cold: ;
                     state = newState;
                      break;
                 case State.Picked:
@@ -59,7 +58,7 @@ public class PaperObjectSM : ObjectSM
                     OnDroppedOnDesk?.Invoke(null);
                 state = newState;
                     break;
-                case State.Dropped: 
+                case State.Dropped:   
                      
                     OnDropped?.Invoke();
                 state = newState;
@@ -72,18 +71,27 @@ public class PaperObjectSM : ObjectSM
         
     }
 
-    void OnEnable()
+    
+
+    public override void OnEnable()
     {
         OnDropped += objectTransform.TransformToSlot;
         OnDropped += objManager.SetToNull;
 
-        OnDroppedOnDesk += _ => ui.ChangeState(UISM.UIState.App);
+
+        OnDroppedOnDesk += _ => objManager.SetToNull();
+        OnDroppedOnDesk += _ => appManager.NewCurrentApp();
+        OnDroppedOnDesk += _ => objSystem.EnableObjects();
+        OnDroppedOnDesk += _ => deskCheck.SetList();
 
         
     }
 
     void OnDisable()
     {
+        OnDroppedOnDesk -= _ => appManager.NewCurrentApp();
+        OnDroppedOnDesk -= _ => objSystem.EnableObjects();
+
         OnDropped -= objectTransform.TransformToSlot;
         OnDropped -= objManager.SetToNull;
     }

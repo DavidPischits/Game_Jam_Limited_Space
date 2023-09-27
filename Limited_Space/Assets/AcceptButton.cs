@@ -5,31 +5,28 @@ using UnityEngine;
 using System;
 public class AcceptButton : But
 {
-    public event Action OnPressed;
-    ButtonState state;
-    [SerializeField] DesireSystem desireSystem;
+    public event Action OnAcceptPressed;
+    [SerializeField] ButtonState state;
 
     public override void ChangeButtonState(ButtonState newState)
     {
-        if (state == newState) { return; }
+        //if (state == newState) { return; }
 
-        else
-        {
             switch(newState)
             {
                 case ButtonState.cold: state = newState;
                     break;
-                case ButtonState.pressed: OnPressed?.Invoke();
+                case ButtonState.pressed: OnAcceptPressed?.Invoke();Debug.Log("pressed");
                     state = newState;
                     break;
             }
 
-        }
+        
     }
 
-    void OnEnable()
+    public override void OnEnable()
     {
-        OnPressed += desireSystem.CheckDesire;
-        OnPressed += desireSystem.CheckNegativeDesires;
+        OnAcceptPressed += appManager.MoveToAccepted;
+        OnAcceptPressed += deskCheck.PressedTrue;
     }
 }
